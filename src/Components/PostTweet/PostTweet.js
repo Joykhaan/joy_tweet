@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../ContextApi/AuthProvider/AuthProvider';
 import PostCard from '../PostCard/PostCard';
 import { FaShare } from 'react-icons/fa';
+import { toast, Toaster } from 'react-hot-toast';
 
 const PostTweet = () => {
     const time = new Date().toLocaleTimeString();
@@ -16,7 +17,7 @@ const PostTweet = () => {
     const { data: myposts = [], refetch } = useQuery({
         queryKey: ['myproducts'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/postscard`);
+            const res = await fetch(`https://joytweet-server.vercel.app/postscard`);
             const data = await res.json();
             return data
 
@@ -60,7 +61,7 @@ const PostTweet = () => {
                         react
 
                     }
-                    fetch('http://localhost:5000/postCards', {
+                    fetch('https://joytweet-server.vercel.app/postCards', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -73,6 +74,7 @@ const PostTweet = () => {
                             if (data.acknowledged) {
                                 form.reset();
                                 refetch()
+                                toast.success("Post Successful");
                             }
                         })
                         .catch(error => console.error(error));
@@ -107,6 +109,7 @@ const PostTweet = () => {
                     post={post}
                 ></PostCard>)
             }
+            <Toaster/>
         </div>
     );
 };

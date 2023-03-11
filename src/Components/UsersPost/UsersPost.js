@@ -7,7 +7,7 @@ const UsersPost = () => {
     const { data: userspost = [], refetch } = useQuery({
         queryKey: ['userspost'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/postscard`);
+            const res = await fetch(`https://joytweet-server.vercel.app/postscard`);
             const data = await res.json();
             return data
 
@@ -18,7 +18,7 @@ const UsersPost = () => {
     const handlepostDelete = (id) => {
         const proced = window.confirm('are you sure?? to delete the Seller');
         if (proced) {
-            fetch(`http://localhost:5000/deletepost/${id}`, {
+            fetch(`https://joytweet-server.vercel.app/deletepost/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

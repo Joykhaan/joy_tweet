@@ -11,7 +11,7 @@ const Sidebar = () => {
     const { data: userInfo = []} = useQuery({
         queryKey: ['userinfo'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/userinfo/${user?.email}`);
+            const res = await fetch(`https://joytweet-server.vercel.app/userinfo/${user?.email}`);
             const data = await res.json();
             return data
 

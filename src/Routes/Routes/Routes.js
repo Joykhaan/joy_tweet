@@ -22,7 +22,7 @@ const router = createBrowserRouter([
             {
                 path:'/mypost/:email',
                 element:<Myposts></Myposts>,
-                loader:({params}) => fetch(`http://localhost:5000/mypost/${params.email}`),
+                loader:({params}) => fetch(`https://joytweet-server.vercel.app/mypost/${params.email}`),
             },
             {
                 path:'/postscard',

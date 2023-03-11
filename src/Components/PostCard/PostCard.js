@@ -12,7 +12,7 @@ const PostCard = ({post}) => {
     const { data: myposts = [], refetch } = useQuery({
         queryKey: ['myproducts'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/postscard`);
+            const res = await fetch(`https://joytweet-server.vercel.app/postscard`);
             const data = await res.json();
             return data
             
@@ -49,7 +49,7 @@ const PostCard = ({post}) => {
             uid:user.uid
 
         }
-        fetch(`http://localhost:5000/reactupdate/${_id}`,{
+        fetch(`https://joytweet-server.vercel.app/reactupdate/${_id}`,{
                 method:'PUT',
                 headers: {
                     'content-type':'application/json'
